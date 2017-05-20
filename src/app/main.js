@@ -9,7 +9,6 @@ const {
   GooglePlusShareButton,
   TwitterShareButton,
   TelegramShareButton,
-  WhatsappShareButton,
   VKShareButton,
   OKShareButton
 } = ShareButtons;
@@ -17,7 +16,6 @@ const {
 const FacebookIcon = generateShareIcon('facebook');
 const TwitterIcon = generateShareIcon('twitter');
 const TelegramIcon = generateShareIcon('telegram');
-const WhatsappIcon = generateShareIcon('whatsapp');
 const GooglePlusIcon = generateShareIcon('google');
 const VKIcon = generateShareIcon('vk');
 const OKIcon = generateShareIcon('ok');
@@ -119,9 +117,6 @@ class Main extends Component {
             <TelegramShareButton url={url}>
               <TelegramIcon {...shareIconProps}/>
             </TelegramShareButton>
-            <WhatsappShareButton url={url}>
-              <WhatsappIcon {...shareIconProps}/>
-            </WhatsappShareButton>
           </div>
         </footer>
 
