@@ -39,7 +39,7 @@ class Main extends Component {
       <div>
         {this.state.gif ? null : <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Как тебя зовут?</label>
-          <input id="name" type="text" onChange={this.handleInputChange}/>
+          <input id="name" type="text" onChange={this.handleInputChange} required/>
           <button>Пройти тест</button>
         </form>}
 
