@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import {Card, CardMedia, CardActions, CardText, CardTitle} from 'material-ui/Card';
 
 class Main extends Component {
   constructor() {
@@ -35,22 +38,44 @@ class Main extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.state.gif ? null : <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Как тебя зовут?</label>
-          <input id="name" type="text" onChange={this.handleInputChange} required/>
-          <button>Пройти тест</button>
-        </form>}
+    const formTemplate = (
+      <div className="form-container">
+        <h1>Уникальный тест на пидора. 100% результат</h1>
+        <form onSubmit={this.handleSubmit}>
+          <p>
+            <TextField onChange={this.handleInputChange} required floatingLabelText="Как тебя зовут?"/>
+            <RaisedButton type="submit" label="Пройти тест"/>
+          </p>
+        </form>
+      </div>
+    );
 
-        {this.state.gif ?
-          <div>
-            <img src={this.state.gif}/>
-            <p>{this.state.name} - пидор!</p>
-            <p>Сомневаешься в результатах? Пройди тест еще раз!</p>
-            <button onClick={this.handleResetState}>Пройти еще раз</button>
-          </div> :
-          null}
+    return (
+      <div className="container">
+        <div className="main-content">
+          {this.state.gif ? null : formTemplate}
+
+          {this.state.gif ?
+            <Card>
+              <CardMedia>
+                <img src={this.state.gif}/>
+              </CardMedia>
+
+              <CardTitle title={`${this.state.name} - пидор!`}/>
+              <CardText>
+                Сомневаешься в результатах? Пройди тест еще раз!
+              </CardText>
+
+              <CardActions>
+                <RaisedButton onTouchTap={this.handleResetState} label="Пройти еще раз"/>
+              </CardActions>
+            </Card> :
+            null}
+        </div>
+
+        <footer className="footer">
+          Предложи друзьям пройти тест, а то мало ли:
+        </footer>
 
       </div>
     );
