@@ -2,6 +2,31 @@ import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {Card, CardMedia, CardActions, CardText, CardTitle} from 'material-ui/Card';
+import {ShareButtons, generateShareIcon} from 'react-share';
+
+const {
+  FacebookShareButton,
+  GooglePlusShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+  VKShareButton,
+  OKShareButton
+} = ShareButtons;
+
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
+const TelegramIcon = generateShareIcon('telegram');
+const WhatsappIcon = generateShareIcon('whatsapp');
+const GooglePlusIcon = generateShareIcon('google');
+const VKIcon = generateShareIcon('vk');
+const OKIcon = generateShareIcon('ok');
+
+const url = 'http://test-na-pidora.com';
+const shareIconProps = {
+  round: true,
+  size: 32
+};
 
 class Main extends Component {
   constructor() {
@@ -75,6 +100,29 @@ class Main extends Component {
 
         <footer className="footer">
           Предложи друзьям пройти тест, а то мало ли:
+          <div className="social-container">
+            <FacebookShareButton url={url}>
+              <FacebookIcon {...shareIconProps}/>
+            </FacebookShareButton>
+            <GooglePlusShareButton url={url}>
+              <GooglePlusIcon {...shareIconProps}/>
+            </GooglePlusShareButton>
+            <TwitterShareButton url={url}>
+              <TwitterIcon {...shareIconProps}/>
+            </TwitterShareButton>
+            <VKShareButton url={url}>
+              <VKIcon {...shareIconProps}/>
+            </VKShareButton>
+            <OKShareButton url={url}>
+              <OKIcon {...shareIconProps}/>
+            </OKShareButton>
+            <TelegramShareButton url={url}>
+              <TelegramIcon {...shareIconProps}/>
+            </TelegramShareButton>
+            <WhatsappShareButton url={url}>
+              <WhatsappIcon {...shareIconProps}/>
+            </WhatsappShareButton>
+          </div>
         </footer>
 
       </div>
