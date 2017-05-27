@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {Card, CardMedia, CardActions, CardText, CardTitle} from 'material-ui/Card';
 import {ShareButtons, generateShareIcon} from 'react-share';
+import Questions from './questions';
 
 const {
   FacebookShareButton,
@@ -72,6 +73,7 @@ class Main extends Component {
             <TextField onChange={this.handleInputChange} required floatingLabelText="Как тебя зовут?"/>
             <RaisedButton type="submit" label="Пройти тест"/>
           </p>
+          <Questions/>
         </form>
       </div>
     );
