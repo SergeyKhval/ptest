@@ -32,7 +32,8 @@ class Main extends Component {
 
     this.state = {
       gif: '',
-      name: ''
+      name: '',
+      result: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -42,12 +43,14 @@ class Main extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({gif: ''});
+    this.setState({gif: '', result: ''});
 
-    fetch('https://yesno.wtf/api?force=yes')
+    const result = this.state.name.toLowerCase().split('').map(c => c.charCodeAt(0)).reduce((p, c) => p + c) % 2;
+
+    fetch(`https://yesno.wtf/api?force=${['no', 'yes'][result]}`)
       .then(result => result.json())
       .then(data => {
-        this.setState({gif: data.image});
+        this.setState({gif: data.image, result});
       })
       .catch(console.error);
   }
@@ -84,7 +87,7 @@ class Main extends Component {
                 <img src={this.state.gif}/>
               </CardMedia>
 
-              <CardTitle title={`${this.state.name} - пидор!`}/>
+              <CardTitle title={`${this.state.name} ${this.state.result ? '-' : 'не'} пидор!`}/>
               <CardText>
                 Сомневаешься в результатах? Пройди тест еще раз!
               </CardText>
