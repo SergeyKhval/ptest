@@ -66,11 +66,11 @@ class Main extends Component {
   render() {
     const formTemplate = (
       <div className="form-container">
-        <h1>Уникальный тест на пидора. 100% результат</h1>
+        <h1>Уникальный тест на пидора. Мгновенный 100% результат</h1>
         <form onSubmit={this.handleSubmit}>
           <p>
             <TextField onChange={this.handleInputChange} required floatingLabelText="Как тебя зовут?"/>
-            <RaisedButton type="submit" label="Пройти тест"/>
+            <RaisedButton type="submit" label="Узнать правду"/>
           </p>
         </form>
       </div>
